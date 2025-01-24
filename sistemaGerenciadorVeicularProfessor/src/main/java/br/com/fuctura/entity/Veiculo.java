@@ -1,14 +1,14 @@
 package br.com.fuctura.entity;
 
 public class Veiculo {
-	
+
 	private Integer codigo;
 	private String placa;
-	private String modelo; 
+	private String modelo;
 	private int ano;
 	private double valor;
 	
-	
+
 	public Veiculo(String placa, String modelo, int ano, double valor) {
 		super();
 		this.placa = placa;
@@ -16,9 +16,10 @@ public class Veiculo {
 		this.ano = ano;
 		this.valor = valor;
 	}
-	
-	public Veiculo() {}
-	
+
+	public Veiculo() {
+	}
+
 	public Integer getCodigo() {
 		return codigo;
 	}
@@ -30,29 +31,41 @@ public class Veiculo {
 	public String getPlaca() {
 		return placa;
 	}
+
 	public void setPlaca(String placa) {
 		this.placa = placa;
 	}
+
 	public String getModelo() {
 		return modelo;
 	}
+
 	public void setModelo(String modelo) {
 		this.modelo = modelo;
 	}
+
 	public int getAno() {
 		return ano;
 	}
+
 	public void setAno(int ano) {
 		this.ano = ano;
 	}
+
 	public double getValor() {
 		return valor;
 	}
+
 	public void setValor(double valor) {
 		this.valor = valor;
 	}
-	
-	//Getters&Setter;
-	
-	
+
+	@Override
+	public String toString() {
+		return "Veiculo [codigo=" + codigo + ", placa=" + placa + ", modelo=" + modelo + ", ano=" + ano + ", valor="
+				+ valor + "]";
+	}
+
+	// Getters&Setter;
+
 }

@@ -4,8 +4,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Objects;
+import java.util.Optional;
 
+import br.com.fuctura.entity.Loja;
 import br.com.fuctura.entity.Veiculo;
+import br.com.fuctura.repository.LojaRepository;
 import br.com.fuctura.repository.VeiculoRepository;
 
 public class Aplicacao {
@@ -36,6 +39,32 @@ public class Aplicacao {
 			if(Objects.nonNull(v.getCodigo())) {
 				System.out.println("Veiculo registrado com sucesso!");
 				System.out.println("Codigo: " + v.getCodigo());
+			}
+
+			
+			Optional<Veiculo> veiculoEncontrado = repository.findById(connection, 1);
+			
+			if(veiculoEncontrado.isPresent()) {
+				System.out.println("Encontrou o veículo");
+				System.out.println(veiculoEncontrado.get());
+			}else {
+				System.out.println("Não Encontrado");
+			}
+			
+			var veiculoEncontrados = repository.findAll(connection);
+			
+			if(veiculoEncontrado.isPresent()) {
+				for(Veiculo veiculo : veiculoEncontrados.get()) {
+					System.out.println(veiculo);
+				}
+			}
+			
+			LojaRepository lojaRepository = new LojaRepository();
+			
+			Optional<Loja> l = lojaRepository.findById(connection, 1);
+			
+			if(l.isPresent()) {
+				System.out.println("Loja: " + l.get());
 			}
 			
 		} catch (SQLException e) {
