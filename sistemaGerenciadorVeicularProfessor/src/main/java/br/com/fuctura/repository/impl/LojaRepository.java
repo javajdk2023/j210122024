@@ -1,21 +1,22 @@
-package br.com.fuctura.repository;
+package br.com.fuctura.repository.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 import br.com.fuctura.entity.Loja;
 import br.com.fuctura.entity.Veiculo;
+import br.com.fuctura.repository.ILojaRepository;
 
-public class LojaRepository {
+public class LojaRepository implements ILojaRepository {
 	
 	
-	public Optional<Loja> findById(Connection connection, int codigo) throws SQLException{
-		String comandoSQL = "select l.nome, v.placa from veiculo v \n"
+	public Optional<Loja> findById(Connection connection, Integer codigo) throws SQLException{
+		String comandoSQL = "select "
+				+ "l.nome, v.placa, v.ano, v.valor "
+				+ "from veiculo v \n"
 				+ "inner join loja_veiculo lv \n"
 				+ "on v.codigo = lv.cod_veiculo \n"
 				+ "inner join loja l\n"
@@ -35,9 +36,11 @@ public class LojaRepository {
 		while(rs.next()) {
 			String nomeLoja = rs.getString("nome");
 			String placaVeiculo = rs.getString("placa");
+			Double valorVeiculo = rs.getDouble("valor");
 			
 			Veiculo v = new Veiculo();
 			v.setPlaca(placaVeiculo);
+			v.setValor(codigo);
 			
 			l.setNome(nomeLoja);
 			

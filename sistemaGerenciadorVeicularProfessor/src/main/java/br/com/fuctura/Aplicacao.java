@@ -8,8 +8,10 @@ import java.util.Optional;
 
 import br.com.fuctura.entity.Loja;
 import br.com.fuctura.entity.Veiculo;
-import br.com.fuctura.repository.LojaRepository;
-import br.com.fuctura.repository.VeiculoRepository;
+import br.com.fuctura.repository.ILojaRepository;
+import br.com.fuctura.repository.IVeiculoRepository;
+import br.com.fuctura.repository.impl.AWSLojaRepository;
+import br.com.fuctura.repository.impl.VeiculoRepository;
 
 public class Aplicacao {
 
@@ -32,7 +34,7 @@ public class Aplicacao {
 			
 			Veiculo v = new Veiculo(placa, modelo, ano, valor);
 			
-			VeiculoRepository repository = new VeiculoRepository();
+			IVeiculoRepository repository = new VeiculoRepository();
 			
 			repository.save(connection, v);
 			
@@ -59,9 +61,9 @@ public class Aplicacao {
 				}
 			}
 			
-			LojaRepository lojaRepository = new LojaRepository();
+			ILojaRepository lojaRepository = new AWSLojaRepository();
 			
-			Optional<Loja> l = lojaRepository.findById(connection, 1);
+			Optional<Loja> l = lojaRepository.findById(connection, 3);
 			
 			if(l.isPresent()) {
 				System.out.println("Loja: " + l.get());

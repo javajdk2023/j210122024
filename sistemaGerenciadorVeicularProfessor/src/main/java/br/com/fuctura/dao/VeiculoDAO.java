@@ -1,4 +1,4 @@
-package br.com.fuctura.repository;
+package br.com.fuctura.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,10 +11,10 @@ import java.util.Optional;
 
 import br.com.fuctura.entity.Veiculo;
 
-public class VeiculoRepository {
-
+public class VeiculoDAO {
+	
 	public Veiculo save(Connection connection, Veiculo veiculo) throws SQLException {
-		String comandoSQL = "insert into j210122024.veiculo (placa, modelo, ano, valor)\n" + "values (?, ?, ?, ?)";
+		String comandoSQL = "insert into veiculo (placa, modelo, ano, valor)\n" + "values (?, ?, ?, ?)";
 
 		PreparedStatement pstm = connection.prepareStatement(comandoSQL, Statement.RETURN_GENERATED_KEYS);
 
@@ -86,5 +86,6 @@ public class VeiculoRepository {
 		v.setCodigo(cod);
 		return v;
 	}
-
+	
+	
 }
