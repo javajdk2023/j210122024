@@ -12,5 +12,6 @@ public interface IVeiculoRepository {
 	Optional<Veiculo> findById(Connection connection, Integer codigo)  throws SQLException;
 	Optional<List<Veiculo>> findAll(Connection connection)  throws SQLException;
 	Veiculo save(Connection connection, Veiculo veiculo)  throws SQLException;
+	Optional<List<Veiculo>> findByIsDisponivel(Connection connection, Boolean isDisponivel) throws SQLException;
 	
 }

@@ -7,6 +7,7 @@ public class Veiculo {
 	private String modelo;
 	private int ano;
 	private double valor;
+	private boolean isDisponivel;
 	
 
 	public Veiculo(String placa, String modelo, int ano, double valor) {
@@ -58,6 +59,16 @@ public class Veiculo {
 
 	public void setValor(double valor) {
 		this.valor = valor;
+	}
+
+	
+	
+	public boolean isDisponivel() {
+		return isDisponivel;
+	}
+
+	public void setDisponivel(boolean isDisponivel) {
+		this.isDisponivel = isDisponivel;
 	}
 
 	@Override

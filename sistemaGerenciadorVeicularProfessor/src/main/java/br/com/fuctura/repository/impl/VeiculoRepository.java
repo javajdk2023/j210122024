@@ -32,4 +32,10 @@ public class VeiculoRepository implements IVeiculoRepository {
 		return veiculoDAO.save(connection, veiculo);
 	}
 
+	@Override
+	public Optional<List<Veiculo>> findByIsDisponivel(Connection connection, Boolean isDisponivel) throws SQLException {
+		// TODO Auto-generated method stub
+		return Optional.empty();
+	}
+
 }
